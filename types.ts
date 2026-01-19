@@ -1,4 +1,3 @@
-
 export interface Project {
   id: string;
   title: string;
@@ -21,10 +20,16 @@ export interface Experience {
 export interface Skill {
   name: string;
   level: number; // 0 to 100
-  category: 'Frontend' | 'Backend' | 'Tools' | 'Soft Skills';
+  category:
+    | "Frontend"
+    | "Backend"
+    | "Database"
+    | "Tools"
+    | "Domain"
+    | "Soft Skills";
 }
 
 export interface Message {
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
 }

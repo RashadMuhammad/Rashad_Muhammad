@@ -3,7 +3,7 @@ import { GoogleGenAI } from "@google/genai";
 import { Message } from "../types.ts";
 import { PERSONAL_INFO, PROJECTS, EXPERIENCES, SKILLS } from "../constants.tsx";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: 'bsrtgerg' });
 
 const SYSTEM_INSTRUCTION = `
 You are the AI Personal Assistant for ${PERSONAL_INFO.name}'s professional portfolio.
