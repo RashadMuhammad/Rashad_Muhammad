@@ -33,7 +33,7 @@ const App: React.FC = () => {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     const sections = ["home", "projects", "experience", "skills", "contact"];
@@ -193,6 +193,15 @@ const App: React.FC = () => {
                   Get In Touch
                 </button>
               </div>
+              <div className="mt-4">
+                <a
+                  href="/Uploads/Muhammad_Rashad.pdf"
+                  download
+                  className="px-8 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-colors dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 inline-block"
+                >
+                  Download CV
+                </a>
+              </div>
             </div>
           </div>
           <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/2 h-1/2 bg-primary-500/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
@@ -314,6 +323,7 @@ const App: React.FC = () => {
                   collaborations.
                 </p>
                 <div className="space-y-6">
+                  {/* Email */}
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center dark:bg-primary-900/20">
                       <svg
@@ -335,7 +345,38 @@ const App: React.FC = () => {
                         Email Me
                       </div>
                       <div className="font-bold text-slate-900 dark:text-white">
-                        {PERSONAL_INFO.email}
+                        <a href={`mailto:${PERSONAL_INFO.email}`}>
+                          {PERSONAL_INFO.email}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Phone */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center dark:bg-primary-900/20">
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.26 1.13a11.04 11.04 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                        Call Me
+                      </div>
+                      <div className="font-bold text-slate-900 dark:text-white">
+                        <a href={`tel:${PERSONAL_INFO.phone}`}>
+                          {PERSONAL_INFO.phone}
+                        </a>
                       </div>
                     </div>
                   </div>

@@ -6,6 +6,7 @@ export const PERSONAL_INFO = {
   title: ".NET & Full-Stack Software Developer",
   location: "Kerala, India",
   email: "rashad007muhammad@gmail.com",
+  phone:'9656801830',
   github: "https://github.com/rashadmuhammad",
   linkedin: "https://www.linkedin.com/in/rashad-muhammad-b671ba305",
   bio: "Results-driven Software Developer with hands-on experience in .NET and MERN technologies, specializing in ERP systems and modern web applications.",
@@ -14,17 +15,16 @@ export const PERSONAL_INFO = {
 };
 
 export const PROJECTS: Project[] = [
-  {
+    {
     id: "1",
-    title: "Chapter50 Aviation",
+    title: "Polosys ERP",
     description:
-      "Modern aviation service website showcasing company offerings and digital presence.",
+      "Enterprise Resource Planning (ERP) system for managing core business operations.",
     longDescription:
-      "A modern static aviation website built with React and Tailwind CSS for marketing and brand visibility. The site highlights aviation services, company profile, and customer engagement features, with integrated EmailJS for contact and inquiries.",
-    image: "/Uploads/Chapter50Aviation.png",
-    tags: ["React", "TailWind", "EmailJS"],
-    link: "https://chapter50.onrender.com",
-    github: "https://github.com/RashadMuhammad/CHAPTER-50",
+      "A robust ERP application developed using .NET and SQL Server to manage core business processes such as sales, inventory, accounting, and reporting. The system emphasizes data integrity, transactional consistency, and scalable architecture suitable for real-world enterprise environments.",
+    image: "/Uploads/PolosysERP.png",
+    tags: [".NET", "SQL Server"],
+    link: "https://polosys.com",
   },
   {
     id: "2",
@@ -61,6 +61,18 @@ export const PROJECTS: Project[] = [
     tags: ["HTML", "CSS", "Javascript"],
     link: "https://rashadmuhammad.github.io/Spess.co",
     github: "https://github.com/RashadMuhammad/Spess.co",
+  },
+  {
+    id: "5",
+    title: "Chapter50 Aviation",
+    description:
+      "Modern aviation service website showcasing company offerings and digital presence.",
+    longDescription:
+      "A modern static aviation website built with React and Tailwind CSS for marketing and brand visibility. The site highlights aviation services, company profile, and customer engagement features, with integrated EmailJS for contact and inquiries.",
+    image: "/Uploads/Chapter50Aviation.png",
+    tags: ["React", "TailWind", "EmailJS"],
+    link: "https://chapter50.onrender.com",
+    github: "https://github.com/RashadMuhammad/CHAPTER-50",
   },
 ];
 
