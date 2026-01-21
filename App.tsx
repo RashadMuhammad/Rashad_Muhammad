@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
 import ThemeToggle from "./components/ThemeToggle.tsx";
 import ProjectCard from "./components/ProjectCard.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
@@ -15,6 +17,8 @@ const App: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showToast, setShowToast] = useState(false);
+
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (isDark) {
@@ -48,13 +52,43 @@ const App: React.FC = () => {
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setShowToast(true);
-      setFormState({ name: "", email: "", message: "" });
-      setTimeout(() => setShowToast(false), 3000);
-    }, 1500);
+
+    emailjs
+      .sendForm(
+        "service_bd5gpeh",
+        "template_84grj2h",
+        formRef.current!,
+        "ydbJ2Kmq9zVUyS6Lp",
+      )
+      .then(() => {
+        toast.success("Message sent successfully ✈️", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+
+        setFormState({ name: "", email: "", message: "" });
+        setIsSubmitting(false);
+      })
+      .catch(() => {
+        toast.error("Failed to send message. Try again!", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+
+        setIsSubmitting(false);
+      });
   };
+
+  // const handleContactSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+  //   setTimeout(() => {
+  //     setIsSubmitting(false);
+  //     setShowToast(true);
+  //     setFormState({ name: "", email: "", message: "" });
+  //     setTimeout(() => setShowToast(false), 3000);
+  //   }, 1500);
+  // };
 
   const navLinks = [
     { name: "Home", id: "home" },
@@ -384,10 +418,15 @@ const App: React.FC = () => {
               </div>
 
               <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-xl dark:bg-slate-900 dark:border-slate-800">
-                <form onSubmit={handleContactSubmit} className="space-y-6">
+                <form
+                  ref={formRef}
+                  onSubmit={handleContactSubmit}
+                  className="space-y-6"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <input
                       required
+                      name="name"
                       value={formState.name}
                       onChange={(e) =>
                         setFormState({ ...formState, name: e.target.value })
@@ -398,6 +437,7 @@ const App: React.FC = () => {
                     />
                     <input
                       required
+                      name="email"
                       value={formState.email}
                       onChange={(e) =>
                         setFormState({ ...formState, email: e.target.value })
@@ -409,6 +449,7 @@ const App: React.FC = () => {
                   </div>
                   <textarea
                     required
+                    name="message"
                     value={formState.message}
                     onChange={(e) =>
                       setFormState({ ...formState, message: e.target.value })
@@ -444,6 +485,7 @@ const App: React.FC = () => {
       )}
 
       <ChatWidget />
+      <ToastContainer aria-label="Notifications" />
     </div>
   );
 };
